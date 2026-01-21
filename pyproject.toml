@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dobrostan-projekt"
+version = "0.1.0"
+description = "Praca semestralna z Inżynierii oprogramowania"
+readme = "README.md"
+requires-python = "==3.12.*"
+
+dependencies = [
+    "numpy",
+    "pandas",
+    "PyYAML",
+    "requests",
+    "toml",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+# Konfiguracja setuptools - import z src w formie modulu
+[tool.setuptools.packages.find]
+where = ["src"]  # start with src catalog
+include = ["src", "src.**"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.yaml"]
