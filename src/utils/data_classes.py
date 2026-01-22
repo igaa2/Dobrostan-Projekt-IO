@@ -1,5 +1,48 @@
 from dataclasses import dataclass
 from typing import Any, Literal
+from enum import Enum
+
+class ValidationStatus(Enum):
+    """Etykiety statusu przejścia walidacji."""
+
+    PASSED = "✓"
+    WARNING = "⚠"
+
+
+@dataclass
+class VariableQuality:
+    """Metryki jakości zmiennej."""
+
+    variable_id: int
+    year: int
+    na: float
+    cv: float
+    skewness: float
+    na_status: ValidationStatus
+    cv_status: ValidationStatus
+    skewness_status: ValidationStatus
+    correlation_status: ValidationStatus
+    status: ValidationStatus
+
+    def validation_info(self) -> str:
+        """
+        Zwraca informację o statusie zmiennej.
+
+        W przypadku negatywnej oceny zwraca informację o wartości metryk, które nie przeszły walidacji.
+        """
+        if self.status == ValidationStatus.PASSED:
+            return ValidationStatus.PASSED.value
+
+        failed = []
+        if self.na_status != ValidationStatus.PASSED:
+            failed.append(f"udział braków: {self.na:.2%}")
+        if self.cv_status != ValidationStatus.PASSED:
+            failed.append(f"wsp. zmienności: {self.cv:.2%}")
+        if self.skewness_status != ValidationStatus.PASSED:
+            failed.append(f"wsp. skośności: {self.skewness:.2%}")
+        if self.correlation_status != ValidationStatus.PASSED:
+            failed.append(f"wysoka korelacja: {self.correlation_status.value}")
+        return f"{ValidationStatus.WARNING.value}: {', '.join(failed)}"
 
 
 @dataclass(frozen=True)
