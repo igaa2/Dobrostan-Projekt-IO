@@ -1,0 +1,50 @@
+data:
+  params:
+    unit-level: 2
+    format: json
+    page-size: 16  # max 100
+  variables:
+    - variable_id: 7737
+      name: Przeciętne miesięczne wydatki
+      stimulant: False  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 1725015
+      name: Wskaźnik urbanizacji
+      stimulant: False  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 155037
+      name: Poszkodowani w wypadkach przy pracy
+      stimulant: True  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 1609531
+      name: Liczba zatrudnionych na stanowiskach pracy, w których wyeliminowano lub ograniczono ryzyko zawodowe
+      stimulant: False  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 454185
+      name: Liczba lekarzy
+      stimulant: False  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 1365344
+      name: Liczba prób samobójczych
+      stimulant: True  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 1632971
+      name: Wskaźnik osób dorosłych uczestniczących w kształceniu lub szkoleniu w wieku 25-64 lata
+      stimulant: False  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 60189
+      name: Księgozbiór bibliotek
+      stimulant: False  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 288082
+      name: Długość drogi dla rowerów
+      stimulant: False  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 1724791
+      name: Powierzchnia parków, zieleńców i terenów zieleni osiedlowej
+      stimulant: False  # False = stymulanta, True = destymulanta
+      weight: 50
+    - variable_id: 1606668
+      name: Subiektywna pozytywna (dobra) ocena sytuacji materialnej gospodarstw domowych
+      stimulant: False  # False = stymulanta, True = destymulanta
+      weight: 50
