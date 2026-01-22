@@ -15,6 +15,7 @@ dependencies = [
     "PyYAML",
     "requests",
     "toml",
+    "loguru",
 ]
 
 [project.optional-dependencies]
@@ -28,7 +29,7 @@ target-version = ["py312"]
 
 # Konfiguracja setuptools - import z src w formie modulu
 [tool.setuptools.packages.find]
-where = ["src"]  # start with src catalog
+where = ["."]  # start with project catalog
 include = ["src", "src.**"]
 
 [tool.setuptools.package-data]
