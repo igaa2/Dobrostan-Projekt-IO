@@ -55,3 +55,47 @@ def main():
     # ==================== KONFIGURACJA STRONY ====================
 
     configurate_page()
+
+     # ==================== KONFIGURACJA PANELU BOCZNEGO ====================
+
+    configure_sidebar()
+
+    ensure_session_state(variables=variables)
+    generate_sliders_and_toggles_for_variables(
+        variables=variables, validation=validation_infos
+    )
+
+    if warn_if_all_sliders_zero():
+        st.stop()
+
+    # Przyciski resetów
+    col_reset_sliders, col_reset_toggles = st.sidebar.columns(2)
+
+    with col_reset_sliders:
+        if st.button(
+            f"🔄⚖️ Resetuj {SessionStatePrefix.SLIDER.value}",
+            use_container_width=True,
+        ):
+            reset_session_state_by_prefix(SessionStatePrefix.SLIDER.value)
+            st.rerun()
+
+    with col_reset_toggles:
+        if st.button(
+            f"🔄📉 Resetuj {SessionStatePrefix.TOGGLE.value}",
+            use_container_width=True,
+        ):
+            reset_session_state_by_prefix(SessionStatePrefix.TOGGLE.value)
+            st.rerun()
+
+    # ==================== PRZELICZENIE WSKAŹNIKA ====================
+
+    weights = SessionStatePrefix.extract_sliders_keys(dictionary=st.session_state)
+    stimulants = SessionStatePrefix.extract_toggles_keys(dictionary=st.session_state)
+
+    df_index = calculate_copras(
+        df=df_normalized,
+        weights=calculate_hybrid_weights(
+            validation_cv=validation_cv, slider_weights=weights
+        ),
+        stimulants=stimulants,
+    )
