@@ -9,6 +9,55 @@ class ValidationStatus(Enum):
     WARNING = "⚠"
 
 
+@dataclass(frozen=True)
+class Variable:
+    variable_id: int
+    name: str
+    stimulant: bool  # False = stymulanta, True = destymulanta
+    weight: int
+
+    def __post_init__(self):
+        """Automatyczna walidacja typów po inicjalizacji."""
+        errors = [
+            e
+            for e in (
+                self._check_value_type(self.variable_id, int, "variable_id"),
+                self._check_value_type(self.name, str, "name"),
+                self._check_value_type(self.stimulant, bool, "stimulant"),
+                self._check_value_type(self.weight, int, "weight"),
+            )
+            if e is not None
+        ]
+
+        if errors:
+            raise TypeError("Invalid types detected:\n- " + "\n- ".join(errors))
+
+    @staticmethod
+    def _check_value_type(
+        value: Any, expected_type: Type[Any], name: str
+    ) -> str | None:
+        """Porównuje typ wartości z oczekiwanym typem."""
+        if not isinstance(value, expected_type):
+            return f"{name} must be {expected_type.__name__}, got {type(value).__name__}: {value!r}"
+        return None
+
+    @classmethod
+    def from_dict(cls, dictionary: dict[str, Any]) -> "Variable":
+        """Tworzy Variable z dicta."""
+
+        required = {"variable_id", "name", "stimulant", "weight"}
+        missing = required - dictionary.keys()
+        if missing:
+            raise KeyError(f"Missing keys in dictionary: {missing}")
+
+        return cls(
+            variable_id=dictionary["variable_id"],
+            name=dictionary["name"],
+            stimulant=dictionary["stimulant"],
+            weight=dictionary["weight"],
+        )
+
+
 @dataclass
 class VariableQuality:
     """Metryki jakości zmiennej."""
