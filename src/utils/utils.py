@@ -26,5 +26,21 @@ def load_yaml(path: str | Path) -> dict:
     return data
 
 
+def load_md(path: str | Path) -> str:
+    """Wczytuje plik Markdown i zwraca jego zawartość jako string."""
+    path = Path(path)
+    logger.info(f"Loading Markdown file from path: {path}")
+
+    if not path.exists():
+        logger.info(f"Markdown file does not exist: {path}")
+        raise FileNotFoundError(f"Markdown file not found: {path}")
+
+    with open(path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    logger.info("Markdown file loaded successfully.")
+    return content
+
+
 if __name__ == "__main__":
     print(get_project_root())
