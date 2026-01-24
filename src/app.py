@@ -99,3 +99,32 @@ def main():
         ),
         stimulants=stimulants,
     )
+
+    # ==================== KONFIGURACJA PANELU GŁÓWNEGO ====================
+
+    configurate_main()
+
+    col_map, col_barplot = st.columns([2, 3])
+
+    with col_map:
+        fig_map = create_map(
+            df=df_index,
+            value_col_name="value",
+            unit_col_name="unit_name",
+            value_label="Wskaźnik dobrostanu",
+        )
+        st.plotly_chart(fig_map, width="stretch")
+
+    with col_barplot:
+        fig_barplot = create_horizontal_barplot_with_mean_line(
+            df=df_index,
+            value_col_name="value",
+            value_label="Wskaźnik dobrostanu",
+            unit_col_name="unit_name",
+            unit_label="Województwo",
+        )
+        st.plotly_chart(fig_barplot, width="stretch")
+
+
+if __name__ == "__main__":
+    main()
