@@ -2,11 +2,13 @@ from dataclasses import dataclass
 from typing import Any, Type, Literal
 from enum import Enum
 
+
 class SessionStatePrefix(Enum):
     """Prefiksy wykorzystywane przy tworzeniu kluczy w session_state."""
 
     SLIDER = "wagi"
     TOGGLE = "typy"
+    MULTISELECT = "jednostki"
 
     def key(self, *parts: Any) -> str:
         return f"{self.value}_{'_'.join(map(str, parts))}"

@@ -128,24 +128,25 @@ def main():
     # Wybór województw do porównania
     st.subheader("Porównanie województw - dane po normalizacji wektorowej")
 
-    if "unit_names_chosen" not in st.session_state:
-        st.session_state.unit_names_chosen = df_index["unit_name"].head(3).tolist()
+    multiselect_key = SessionStatePrefix.MULTISELECT.value
+    if multiselect_key not in st.session_state:
+        st.session_state[multiselect_key] = df_index["unit_name"].head(3).tolist()
 
-    unit_names_chosen = st.multiselect(
+    st.multiselect(
         "Wybierz województwa do porównania",
         options=df_index["unit_name"],
-        default=st.session_state.unit_names_chosen,
+        default=st.session_state[multiselect_key],  # <-- TU
+        key=multiselect_key,
         placeholder="Nie wskazano ani jednego województwa.",
     )
-    st.session_state.unit_names_chosen = unit_names_chosen
 
-    if unit_names_chosen:
+    if st.session_state[multiselect_key]:
         fig_radar = create_radar(
             df=df_normalized,
             value_col_name="value",
             variable_col_name="name",
             unit_col_name="unit_name",
-            chosen_units=unit_names_chosen,
+            chosen_units=st.session_state[multiselect_key],
             stimulants=stimulants,
         )
         st.plotly_chart(fig_radar, width="stretch")
