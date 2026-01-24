@@ -1,0 +1,49 @@
+import yaml
+from pathlib import Path
+from loguru import logger
+
+
+def get_project_root() -> Path:
+    """Zwraca ścieżkę do katalogu głównego projektu."""
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / "pyproject.toml").exists():
+            logger.info(f"Project root resolved: {parent}")
+            return parent
+    raise FileNotFoundError("Nie znaleziono pliku konfiguracyjnego projektu.")
+
+
+def load_yaml(path: str | Path) -> dict:
+    """Wczytuje plik YAML i zwraca jego zawartość jako słownik."""
+    path = Path(path)
+    logger.info(f"Loading YAML file from path: {path}")
+
+    if not path.exists():
+        logger.info(f"YAML file does not exist: {path}")
+        raise FileNotFoundError(f"YAML file not found: {path}")
+
+    with open(path, "r", encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+
+    logger.info("YAML file loaded successfully.")
+    return data
+
+
+def load_md(path: str | Path) -> str:
+    """Wczytuje plik Markdown i zwraca jego zawartość jako string."""
+    path = Path(path)
+    logger.info(f"Loading Markdown file from path: {path}")
+
+    if not path.exists():
+        logger.info(f"Markdown file does not exist: {path}")
+        raise FileNotFoundError(f"Markdown file not found: {path}")
+
+    with open(path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    logger.info("Markdown file loaded successfully.")
+    return content
+
+
+if __name__ == "__main__":
+    print(get_project_root())
