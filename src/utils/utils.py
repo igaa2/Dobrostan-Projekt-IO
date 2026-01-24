@@ -5,9 +5,12 @@ from loguru import logger
 
 def get_project_root() -> Path:
     """Zwraca ścieżkę do katalogu głównego projektu."""
-    root = Path(__file__).resolve().parent.parent
-    logger.info(f"Project root resolved: {root}")
-    return root
+    current = Path(__file__).resolve()
+    for parent in current.parents:
+        if (parent / "pyproject.toml").exists():
+            logger.info(f"Project root resolved: {parent}")
+            return parent
+    raise FileNotFoundError("Nie znaleziono pliku konfiguracyjnego projektu.")
 
 
 def load_yaml(path: str | Path) -> dict:
