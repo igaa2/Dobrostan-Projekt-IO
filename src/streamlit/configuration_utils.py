@@ -28,7 +28,9 @@ def configure_sidebar() -> None:
     logger.info("Sidebar configured.")
 
 
-
+def configurate_main() -> None:
+    st.title("📊 Dobrostan Województw Polski")
+    st.markdown("---")
 
 
 def ensure_session_state(variables: list[Variable]) -> None:
