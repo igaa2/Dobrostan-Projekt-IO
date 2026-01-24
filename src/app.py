@@ -42,11 +42,12 @@ def main():
 
     # ==================== POBRANIE DANYCH ====================
 
-    df_oryginal = fetch_most_recent_year_data_for_variables(
-        variables=variables,
-        params=data_params,
-        sleep_between_requests=0.5,
-    )
+    with st.spinner("Pobieranie danych z Banku Danych Lokalnych GUS..."):
+        df_oryginal = fetch_most_recent_year_data_for_variables(
+            variables=variables,
+            params=data_params,
+            sleep_between_requests=0.5,
+        )
 
     validation_infos, validation_cv = validate_and_extract_validation(df=df_oryginal)
 
@@ -55,6 +56,13 @@ def main():
     # ==================== KONFIGURACJA STRONY ====================
 
     configurate_page()
+
+    hide_warning_style = """
+        <style>
+            .stAlert {display:none;}
+        </style>
+    """
+    st.markdown(hide_warning_style, unsafe_allow_html=True)
 
     # ==================== KONFIGURACJA PANELU BOCZNEGO ====================
 
@@ -89,15 +97,15 @@ def main():
 
     # ==================== PRZELICZENIE WSKAŹNIKA ====================
 
-    weights = SessionStatePrefix.extract_sliders_keys(dictionary=st.session_state)
-    stimulants = SessionStatePrefix.extract_toggles_keys(dictionary=st.session_state)
-
     df_index = calculate_copras(
         df=df_normalized,
         weights=calculate_hybrid_weights(
-            validation_cv=validation_cv, slider_weights=weights
+            validation_cv=validation_cv,
+            slider_weights=SessionStatePrefix.extract_sliders_keys(
+                dictionary=st.session_state
+            ),
         ),
-        stimulants=stimulants,
+        stimulants=SessionStatePrefix.extract_toggles_keys(dictionary=st.session_state),
     )
 
     # ==================== KONFIGURACJA PANELU GŁÓWNEGO ====================
@@ -135,7 +143,7 @@ def main():
     st.multiselect(
         "Wybierz województwa do porównania",
         options=df_index["unit_name"],
-        default=st.session_state[multiselect_key],  # <-- TU
+        default=st.session_state[multiselect_key],
         key=multiselect_key,
         placeholder="Nie wskazano ani jednego województwa.",
     )
@@ -144,10 +152,13 @@ def main():
         fig_radar = create_radar(
             df=df_normalized,
             value_col_name="value",
+            variable_id_col_name="variable_id",
             variable_col_name="name",
             unit_col_name="unit_name",
             chosen_units=st.session_state[multiselect_key],
-            stimulants=stimulants,
+            stimulants=SessionStatePrefix.extract_toggles_keys(
+                dictionary=st.session_state
+            ),
         )
         st.plotly_chart(fig_radar, width="stretch")
     else:

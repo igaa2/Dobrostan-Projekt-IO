@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 import json
 import urllib.request
 from loguru import logger
+from src.dashboard.data_utils import vector_normalize
 
 pd.set_option("future.no_silent_downcasting", True)
 
@@ -137,6 +138,7 @@ def create_map(
 def create_radar(
     df: pd.DataFrame,
     value_col_name: str,
+    variable_id_col_name: str,
     variable_col_name: str,
     unit_col_name: str,
     chosen_units: list[str],
@@ -145,10 +147,14 @@ def create_radar(
 ) -> px.line_polar:
     df_radar = df[df[unit_col_name].isin(chosen_units)].copy()
 
-    mask = df_radar[variable_col_name].map(stimulants).fillna(False)
+    mask = df_radar[variable_id_col_name].map(stimulants).fillna(False)
     df_radar.loc[mask, value_col_name] = (
         1 - df_radar.loc[mask, value_col_name]
     )  # lustrzane odbicie destymulant
+
+    df_radar[value_col_name] = df_radar.groupby(variable_id_col_name)[
+        value_col_name
+    ].transform(vector_normalize)
 
     fig = px.line_polar(
         df_radar,
