@@ -46,19 +46,22 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 
 | Nazwa Technologii | Przeznaczenie | Wersja |
 | :--- | :--- | :--- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Python | Główny język programowania do implementacji logiki biznesowej i interfejsu | 3.12.* |
+| Visual Studio Code | Zintegrowane środowisko programistyczne (IDE) do edycji kodu źródłowego |  |
+| Git & GitHub | System kontroli wersji oraz repozytorium zdalne do pracy grupowej | - |
 
 ### Architektura uruchomieniowa
 *Technologie wymagane do działania systemu w środowisku docelowym.*
 
 | Nazwa Technologii | Przeznaczenie | Wersja |
 | :--- | :--- | :--- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Streamlit | Framework do obsługi interfejsu użytkownika (Frontend) i renderowania aplikacji webowej | 1.30+ |
+| Pandas | Biblioteka do manipulacji danymi, strukturyzowania DataFrame i normalizacji | 2.0+ |
+| NumPy | Wykonywanie obliczeń numerycznych (np. wektorowa normalizacja danych) | 1.24+ |
+| Plotly Express | Generowanie interaktywnych wizualizacji (mapy, wykresy słupkowe, wykresy radarowe) | 5.18+ |
+| SciPy | Obliczenia statystyczne (wyliczanie współczynnika skośności) | 1.10+ |
+| Requests | Obsługa protokołu HTTP do komunikacji z API Banku Danych Lokalnych | 2.31+ |
+| Loguru | System logowania zdarzeń w aplikacji (obsługa błędów i informacji) | 0.7+ |
+| API BDL GUS | Zewnętrzne źródło danych statystycznych (REST API) | v1 |
 
 ## Testy
