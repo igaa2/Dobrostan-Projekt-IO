@@ -12,7 +12,9 @@ def configurate_page() -> None:
         page_icon="📊",
         layout="wide",  # page elements use the entire screen width
         initial_sidebar_state="expanded",
-        menu_items={"About": load_md(get_project_root() / "streamlit" / "about.md")},
+        menu_items={
+            "About": load_md(get_project_root() / "src" / "dashboard" / "about.md")
+        },
     )
     logger.info("Streamlit page configured.")
 
@@ -94,6 +96,7 @@ def generate_toggle(container: DeltaGenerator, session_state_key: str) -> bool:
         help="OFF = stymulanta, ON = destymulanta",
     )
 
+
 def generate_sliders_and_toggles_for_variables(
     variables: list[Variable], validation: dict[int, str]
 ) -> None:
@@ -125,3 +128,7 @@ def reset_session_state_by_prefix(prefix: str) -> None:
     for key in list(st.session_state.keys()):
         if key.startswith(prefix):
             del st.session_state[key]
+
+
+if __name__ == "__main__":
+    load_md(get_project_root() / "streamlit" / "about.md")

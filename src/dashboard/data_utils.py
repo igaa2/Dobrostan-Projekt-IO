@@ -46,9 +46,7 @@ def fetch_most_recent_year_data_for_variables(
 
 @st.cache_data
 def validate_and_extract_validation(df: pd.DataFrame):
-    validation = VariableValidator(max_correlation=0.5, cv_min=0.12).validate_dataframe(
-        df
-    )
+    validation = VariableValidator().validate_dataframe(df)
 
     validation_infos = {v.variable_id: v.validation_info() for v in validation}
     validation_cv = {v.variable_id: v.cv for v in validation}

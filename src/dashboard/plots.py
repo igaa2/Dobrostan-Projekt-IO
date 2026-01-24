@@ -6,6 +6,8 @@ import json
 import urllib.request
 from loguru import logger
 
+pd.set_option("future.no_silent_downcasting", True)
+
 
 def create_horizontal_barplot_with_mean_line(
     df: pd.DataFrame,
@@ -130,3 +132,75 @@ def create_map(
 
     logger.info("Map chart created.")
     return fig
+
+
+def create_radar(
+    df: pd.DataFrame,
+    value_col_name: str,
+    variable_col_name: str,
+    unit_col_name: str,
+    chosen_units: list[str],
+    stimulants: dict[int, bool],
+    unit_label: str = "Województwa",
+) -> px.line_polar:
+    df_radar = df[df[unit_col_name].isin(chosen_units)].copy()
+
+    mask = df_radar[variable_col_name].map(stimulants).fillna(False)
+    df_radar.loc[mask, value_col_name] = (
+        1 - df_radar.loc[mask, value_col_name]
+    )  # lustrzane odbicie destymulant
+
+    fig = px.line_polar(
+        df_radar,
+        r=value_col_name,
+        theta=variable_col_name,
+        color=unit_col_name,
+        line_close=True,
+    )
+
+    fig.update_traces(fill="toself")
+    fig.update_layout(
+        title="🕸️ Wykres radarowy",
+        polar=dict(
+            angularaxis=dict(
+                showline=False,  # bez linii osi
+                showticklabels=True,  # pokazuje etykiety zmiennych
+                ticks="",  # bez ticków
+                gridcolor="lightgrey",  # kolor linii pomocniczych
+            ),
+            radialaxis=dict(
+                showline=False,  # bez linii osi
+                showticklabels=False,  # bez wartości liczbowych
+                ticks="",  # bez ticków
+                gridcolor="lightgrey",  # kolor linii pomocniczych
+            ),
+        ),
+        autosize=True,
+        font=dict(size=12),
+        legend_title_text=unit_label,
+        coloraxis_colorbar=dict(ticksuffix="%"),
+    )
+
+    logger.info(f"Radar char created.")
+    return fig
+
+
+if __name__ == "__main__":
+    df_radar = pd.DataFrame(
+        {
+            "variable": ["A", "B", "C", "D", "A", "C"],
+            "value": [0.1, 0.8, 0.4, 0.2, 0.8, 0.3],
+        }
+    )
+    print(df_radar)
+
+    # Słownik: True = destymulanta (ma być odwrócone)
+    stimulants = {"A": True, "B": False, "C": True, "D": False}
+
+    # maska: gdzie variable jest destymulantą
+    mask = df_radar["variable"].map(stimulants).fillna(False)
+    print(df_radar.loc[mask])
+
+    # odwracanie tylko dla destymulant
+    df_radar.loc[mask, "value"] = 1 - df_radar.loc[mask, "value"]
+    print(df_radar)

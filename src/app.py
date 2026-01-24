@@ -3,7 +3,7 @@ import streamlit as st
 
 from src.utils.data_classes import Variable, SessionStatePrefix, DataParams
 from src.utils.utils import get_project_root, load_yaml
-from src.streamlit.configuration_utils import (
+from src.dashboard.configuration_utils import (
     configurate_page,
     configure_sidebar,
     configurate_main,
@@ -12,12 +12,12 @@ from src.streamlit.configuration_utils import (
     reset_session_state_by_prefix,
     warn_if_all_sliders_zero,
 )
-from src.streamlit.data_utils import (
+from src.dashboard.data_utils import (
     fetch_most_recent_year_data_for_variables,
     normalize_per_variable,
     validate_and_extract_validation,
 )
-from src.streamlit.plots import (
+from src.dashboard.plots import (
     create_map,
     create_horizontal_barplot_with_mean_line,
     create_radar,
@@ -31,7 +31,7 @@ from src.composite_index.copras import (
 
 def main():
     root = get_project_root()
-    config = load_yaml(root / "config.yaml")
+    config = load_yaml(root / "src" / "config.yaml")
 
     data_params = DataParams.from_dict(config["data"]["params"])
     variables = [Variable.from_dict(dictionary=d) for d in config["data"]["variables"]]
@@ -56,7 +56,7 @@ def main():
 
     configurate_page()
 
-     # ==================== KONFIGURACJA PANELU BOCZNEGO ====================
+    # ==================== KONFIGURACJA PANELU BOCZNEGO ====================
 
     configure_sidebar()
 
@@ -124,6 +124,33 @@ def main():
             unit_label="Województwo",
         )
         st.plotly_chart(fig_barplot, width="stretch")
+
+    # Wybór województw do porównania
+    st.subheader("Porównanie województw - dane po normalizacji wektorowej")
+
+    if "unit_names_chosen" not in st.session_state:
+        st.session_state.unit_names_chosen = df_index["unit_name"].head(3).tolist()
+
+    unit_names_chosen = st.multiselect(
+        "Wybierz województwa do porównania",
+        options=df_index["unit_name"],
+        default=st.session_state.unit_names_chosen,
+        placeholder="Nie wskazano ani jednego województwa.",
+    )
+    st.session_state.unit_names_chosen = unit_names_chosen
+
+    if unit_names_chosen:
+        fig_radar = create_radar(
+            df=df_normalized,
+            value_col_name="value",
+            variable_col_name="name",
+            unit_col_name="unit_name",
+            chosen_units=unit_names_chosen,
+            stimulants=stimulants,
+        )
+        st.plotly_chart(fig_radar, width="stretch")
+    else:
+        st.warning("Wybierz przynajmniej jedno województwo.")
 
 
 if __name__ == "__main__":
