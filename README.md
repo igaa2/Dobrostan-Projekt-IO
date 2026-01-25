@@ -121,7 +121,7 @@ Aplikacja powinna automatycznie otworzyć się w domyślnej przeglądarce.
 
 ### Krok 5: Rozwiązywanie problemów
 
-> Błąd "Command not found: streamlit": Upewnij się, że aktywował*ś środowisko wirtualne (Krok 2) przed instalacją.
+> Błąd "Command not found: streamlit": Upewnij się, że aktywowano środowisko wirtualne (Krok 2) przed instalacją.
 
 > Błąd połączenia: Przy pierwszym uruchomieniu aplikacja pobiera dane z API GUS. Upewnij się, że masz aktywne połączenie z internetem.
 
