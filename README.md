@@ -129,7 +129,7 @@ Aplikacja powinna automatycznie otworzyć się w domyślnej przeglądarce.
 
 ### Scenariusze testów
 
-| <div align="center">ID</div> | <div align="center">Wymaganie</div> | <div align="center">Nazwa scenariusza</div> | <div align="center">Kroki do wykonania (Akcja)</div> | <div align="center">Oczekiwany rezultat</div> |
+| <div align="center">ID</div> | <div align="center">Wymaganie</div> | <div align="center">Nazwa scenariusza</div> | <div align="center">Kroki do wykonania</div> | <div align="center">Oczekiwany rezultat</div> |
 | :--- | :--- | :--- | :--- | :--- |
 | **TC-01** | US-01, US-03 | Uruchomienie i dane | 1. Uruchom aplikację.<br>2. Poczekaj na załadowanie danych z API GUS. | Aplikacja uruchamia się bez błędów. Wyświetla się tytuł, mapa Polski, ranking województw oraz wykres radarowy. |
 | **TC-02** | US-05 | Interakcja z mapą | 1. Najedź kursorem na dowolne województwo na mapie.<br>2. Sprawdź etykietę. | Mapa reaguje na kursor. Wyświetla się dymek z nazwą województwa i wartością wskaźnika w %. |
