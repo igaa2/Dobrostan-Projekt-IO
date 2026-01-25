@@ -52,7 +52,8 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 | **Python** | Główny język programowania | >= 3.12 |
 | **Visual Studio Code** | Zintegrowane środowisko programistyczne (IDE) do edycji kodu źródłowego | >= 1.96.2 |
 | **Black** | Formater kodu i kontrola jakości | >= 25.12.0 |
-| **Git & GitHub** | System kontroli wersji oraz repozytorium zdalne do pracy grupowej | >= 2.47.1 |
+| **Git** | System kontroli wersji | >= 2.47.1 |
+| **GitHub** | Platforma hostingowa dla repozytoriów kodu | Nie dotyczy |
 | **Setuptools** | Narzędzie do budowania i pakowania projektu | >= 61.0 |
 
 ### Architektura uruchomieniowa
