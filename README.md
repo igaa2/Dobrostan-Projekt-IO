@@ -47,7 +47,7 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 ### Architektura rozwoju
 *Stos technologiczny wykorzystywany podczas tworzenia oprogramowania.*
 
-| Nazwa Technologii | Przeznaczenie | Wersja |
+| <div align="center">Nazwa Technologii</div> | <div align="center">Przeznaczenie</div> | <div align="center">Wersja</div> |
 | :--- | :--- | :--- |
 | **Python** | Główny język programowania | >= 3.12 |
 | **Visual Studio Code** | Zintegrowane środowisko programistyczne (IDE) do edycji kodu źródłowego | >= 1.96.2 |
@@ -141,7 +141,7 @@ Aplikacja powinna automatycznie otworzyć się w domyślnej przeglądarce.
 ### Sprawozdanie z wykonania scenariuszy testów
 
 | ID Scenariusza | Wynik | Uwagi |
-| :--- | :--- | :---: |
+| :--- | :--- | :--- |
 | **TC-01** | Pozytywny | - |
 | **TC-02** | Pozytywny | - |
 | **TC-03** | Pozytywny | Odświeżanie działa płynnie. |
