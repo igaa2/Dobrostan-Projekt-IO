@@ -5,6 +5,7 @@
 * [Prawa autorskie](#prawa-autorskie)
 * [Specyfikacja wymagań](#specyfikacja-wymagań)
 * [Architektura oprogramowania](#architektura-oprogramowania)
+* [Procedura instalacji i uruchomienia](#procedura-instalacji-i-uruchomienia)
 * [Testy](#testy)
 
 ## Charakterystyka oprogramowania
@@ -48,7 +49,7 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 
 | Nazwa Technologii | Przeznaczenie | Wersja |
 | :--- | :--- | :--- |
-| **Python** | Główny język programowania do implementacji logiki biznesowej i interfejsu | >= 3.12 |
+| **Python** | Główny język programowania | >= 3.12 |
 | **Visual Studio Code** | Zintegrowane środowisko programistyczne (IDE) do edycji kodu źródłowego | Najnowsza |
 | **Black** | Formater kodu i kontrola jakości (Dev dependency) | >= 25.12.0 |
 | **Git & GitHub** | System kontroli wersji oraz repozytorium zdalne do pracy grupowej | - |
@@ -59,6 +60,7 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 
 | Nazwa Technologii | Przeznaczenie | Wersja |
 | :--- | :--- | :--- |
+| **Python** | Środowisko uruchomieniowe (interpreter języka) | >= 3.12 |
 | **Streamlit** | Framework do obsługi interfejsu użytkownika i renderowania aplikacji webowej | >= 1.52.2 |
 | **Pandas** | Biblioteka do manipulacji danymi, strukturyzowania DataFrame i normalizacji | >= 2.3.3 |
 | **NumPy** | Wykonywanie obliczeń numerycznych (np. wektorowa normalizacja danych) | >= 2.3.0 |
@@ -70,7 +72,6 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 | **PyYAML** | Obsługa plików konfiguracyjnych w formacie YAML | >= 6.0.3 |
 
 ## Procedura instalacji i uruchomienia
-
 *Poniższa instrukcja opisuje kroki niezbędne do uruchomienia aplikacji w środowisku lokalnym.*
 
 **Wymagania wstępne**
@@ -119,6 +120,7 @@ Aplikacja powinna automatycznie otworzyć się w domyślnej przeglądarce.
 ### Krok 5: Rozwiązywanie problemów
 
 > Błąd "Command not found: streamlit": Upewnij się, że aktywował*ś środowisko wirtualne (Krok 2) przed instalacją.
+
 > Błąd połączenia: Przy pierwszym uruchomieniu aplikacja pobiera dane z API GUS. Upewnij się, że masz aktywne połączenie z internetem.
 
 ## Testy
