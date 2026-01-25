@@ -21,7 +21,7 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 
 ## Specyfikacja wymagań
 
-*Wymagania funkcjonalne zdefiniowane w formie historyjek użytkownika (User Stories).*
+*Wymagania funkcjonalne zdefiniowane w formie historyjek użytkownika (User Stories). W nawiasach kwadratowych określono priorytety.*
 
 ### Moduł Danych i Obliczeń (Backend)
 
@@ -38,6 +38,8 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 > **US-05:** [2] Jako **Użytkownik**, chcę **zobaczyć wyniki na interaktywnej mapie Polski**, aby łatwiej ocenić rozkład jakości życia w interesującym mnie województwie.
 
 > **US-06:** [3] Jako **Użytkownik**, chcę **porównać kilka wybranych województw w widoku "obok siebie"**, aby wyraźnie zobaczyć różnice w konkretnych składowych wskaźnika.
+
+*Priorytety: 1 - wymagane, 2 - przydatne, 3 - opcjonalne.*
 
 ## Architektura oprogramowania
 
@@ -109,7 +111,7 @@ pip install .
 ### Krok 4: Uruchomienie aplikacji
 
 ```python
-streamlit run app.py
+streamlit run ./src/app.py
 ```
 
 Aplikacja powinna automatycznie otworzyć się w domyślnej przeglądarce.
