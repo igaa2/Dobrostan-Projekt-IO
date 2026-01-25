@@ -58,7 +58,7 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 ### Architektura uruchomieniowa
 *Technologie wymagane do działania systemu w środowisku docelowym.*
 
-| Nazwa Technologii | Przeznaczenie | Wersja |
+| <div align="center">Nazwa Technologii</div> | <div align="center">Przeznaczenie</div> | <div align="center">Wersja</div> |
 | :--- | :--- | :--- |
 | **Python** | Środowisko uruchomieniowe (interpreter języka) | >= 3.12 |
 | **Streamlit** | Framework do obsługi interfejsu użytkownika i renderowania aplikacji webowej | >= 1.52.2 |
@@ -129,10 +129,10 @@ Aplikacja powinna automatycznie otworzyć się w domyślnej przeglądarce.
 
 ### Scenariusze testów
 
-| ID | Wymaganie | Nazwa Scenariusza | Kroki do wykonania | Oczekiwany rezultat |
+| <div align="center">ID</div> | <div align="center">Wymaganie</div> | <div align="center">Nazwa scenariusza</div> | <div align="center">Kroki do wykonania (Akcja)</div> | <div align="center">Oczekiwany rezultat</div> |
 | :--- | :--- | :--- | :--- | :--- |
 | **TC-01** | US-01, US-03 | Uruchomienie i dane | 1. Uruchom aplikację.<br>2. Poczekaj na załadowanie danych z API GUS. | Aplikacja uruchamia się bez błędów. Wyświetla się tytuł, mapa Polski, ranking województw oraz wykres radarowy. |
-| **TC-02** | US-05 | Interakcja z mapą | 1. Najedź kursorem na dowolne województwo na mapie.<br>2. Sprawdź etykietę. | Mapa reaguje na kursor. Wyświetla się dymek (tooltip) z nazwą województwa i wartością wskaźnika w %. |
+| **TC-02** | US-05 | Interakcja z mapą | 1. Najedź kursorem na dowolne województwo na mapie.<br>2. Sprawdź etykietę. | Mapa reaguje na kursor. Wyświetla się dymek z nazwą województwa i wartością wskaźnika w %. |
 | **TC-03** | US-04 | Zmiana wag (suwaki) | 1. Przesuń suwak wagi dla wybranej zmiennej na 100%.<br>2. Ustaw inną wagę na 0%. | Ranking na wykresie słupkowym oraz kolory na mapie automatycznie się aktualizują zgodnie z nowymi wagami. |
 | **TC-04** | US-06 | Porównanie regionów | 1. W sekcji "Porównanie" wybierz z listy dwa województwa.<br>2. Obserwuj wykres radarowy. | Generuje się wykres radarowy z nałożonymi na siebie obrysami dla wybranych regionów. |
 | **TC-05** | US-02 | Destymulanty | 1. Zmień przełącznik przy zmiennej na "ON".<br>2. Sprawdź ranking. | Ranking przelicza się. Województwa z wysoką wartością tej cechy spadają w rankingu. |
@@ -141,7 +141,7 @@ Aplikacja powinna automatycznie otworzyć się w domyślnej przeglądarce.
 ### Sprawozdanie z wykonania scenariuszy testów
 
 | ID Scenariusza | Wynik | Uwagi |
-| :--- | :--- | :--- |
+| :---: | :---: | :---: |
 | **TC-01** | Pozytywny | - |
 | **TC-02** | Pozytywny | - |
 | **TC-03** | Pozytywny | Odświeżanie działa płynnie. |
