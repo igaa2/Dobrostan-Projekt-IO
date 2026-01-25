@@ -141,7 +141,7 @@ Aplikacja powinna automatycznie otworzyć się w domyślnej przeglądarce.
 ### Sprawozdanie z wykonania scenariuszy testów
 
 | ID Scenariusza | Wynik | Uwagi |
-| :--- | :--- | :--- |
+| :--- | :--- | :---: |
 | **TC-01** | Pozytywny | - |
 | **TC-02** | Pozytywny | - |
 | **TC-03** | Pozytywny | Odświeżanie działa płynnie. |
