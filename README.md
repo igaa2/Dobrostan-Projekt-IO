@@ -32,7 +32,7 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 
 ### Moduł Interfejsu i Prezentacji (Frontend)
 
-> **US-03:** [1] Jako **Użytkownik Szukający Miejsca do Życia**, chcę **zobaczyć ranking województw posortowany według jakości życia**, aby szybko zidentyfikować najlepsze regiony do zamieszkania.
+> **US-03:** [1] Jako **Użytkownik** szukający miejsca do życia, chcę **zobaczyć ranking województw posortowany według jakości życia**, aby szybko zidentyfikować najlepsze regiony do zamieszkania.
 
 > **US-04:** [2] Jako **Użytkownik**, chcę **mieć możliwość zmiany wag poszczególnych kryteriów**, aby obliczony wskaźnik kompozytowy odpowiadał moim osobistym preferencjom.
 
@@ -50,9 +50,9 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 | Nazwa Technologii | Przeznaczenie | Wersja |
 | :--- | :--- | :--- |
 | **Python** | Główny język programowania | >= 3.12 |
-| **Visual Studio Code** | Zintegrowane środowisko programistyczne (IDE) do edycji kodu źródłowego | Najnowsza |
-| **Black** | Formater kodu i kontrola jakości (Dev dependency) | >= 25.12.0 |
-| **Git & GitHub** | System kontroli wersji oraz repozytorium zdalne do pracy grupowej | - |
+| **Visual Studio Code** | Zintegrowane środowisko programistyczne (IDE) do edycji kodu źródłowego | >= 1.96.2 |
+| **Black** | Formater kodu i kontrola jakości | >= 25.12.0 |
+| **Git & GitHub** | System kontroli wersji oraz repozytorium zdalne do pracy grupowej | >= 2.47.1 |
 | **Setuptools** | Narzędzie do budowania i pakowania projektu | >= 61.0 |
 
 ### Architektura uruchomieniowa
@@ -77,8 +77,10 @@ Głównym celem projektu jest dostarczenie użytkownikowi rzetelnej informacji o
 **Wymagania wstępne**
 
 > Zainstalowany język **Python w wersji >= 3.12**.
+
 > Zainstalowany system kontroli wersji **Git**.
-> Dostęp do internetu (pobieranie danych z API BDL GUS)
+
+> Dostęp do internetu (pobieranie danych z API BDL GUS).
 
 ### Krok 1: Pobranie kodu źródłowego
 
