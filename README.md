@@ -1,4 +1,4 @@
-# Wskaźnik Kompozytowy Jakości Życia Polskich Województw (DobrostanPL) :shamrock:
+# Wskaźnik Kompozytowy Jakości Życia Polskich Województw (DobrostanPL) :shamrock: 🍀
 
 ## Spis treści
 * [Charakterystyka oprogramowania](#charakterystyka-oprogramowania)
